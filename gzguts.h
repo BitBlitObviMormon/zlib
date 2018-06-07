@@ -3,6 +3,10 @@
  * For conditions of distribution and use, see copyright notice in zlib.h
  */
 
+#ifdef _MSC_VER
+#  define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #ifdef _LARGEFILE64_SOURCE
 #  ifndef _LARGEFILE_SOURCE
 #    define _LARGEFILE_SOURCE 1
@@ -43,7 +47,7 @@
 #  define WIDECHAR
 #endif
 
-#ifdef WINAPI_FAMILY
+#if defined(WINAPI_FAMILY) || defined(_MSC_VER)
 #  define open _open
 #  define read _read
 #  define write _write
